@@ -35,9 +35,19 @@ package {'libapache2-mod-php5':
         require => Package['php5-mysql'],
         }
 
+exec { 'manual-unzip':
+   command     => 'unzip manual.zip',
+   cwd         => '/tmp/PHP/zip',
+   path        => ['/usr/bin'],
+   require	   => Package['apache2'],
+ #refreshonly => true,
+ }
+
+
+# Manually Deploying/Copying project into apache2 workspace		
 file { '/var/www/html/website1':
-  source => "/tmp/PHP/website1",
-  require => Package['apache2'],
+  source => "/tmp/PHP/zip/website1",
+  require => Exec['manual-unzip'],
   recurse => true,
 }
 
@@ -51,3 +61,5 @@ exec {'Followup script':
         require => Exec['Create db'],
      }
 
+
+	 
