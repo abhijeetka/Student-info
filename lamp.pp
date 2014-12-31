@@ -46,7 +46,7 @@ exec { 'manual-unzip':
 
 # Manually Deploying/Copying project into apache2 workspace		
 file { '/var/www/html/website1':
-  source => "/tmp/PHP/zip/website1",
+  source => "/tmp/PHP/website1",
   require => Exec['manual-unzip'],
   recurse => true,
 }
