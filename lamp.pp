@@ -37,7 +37,7 @@ package {'libapache2-mod-php5':
 
 exec { 'manual-unzip':
    command     => 'unzip manual.zip',
-   cwd         => '/tmp/PHP/zip',
+   cwd         => '/tmp/PHP/website1/',
    path        => ['/usr/bin'],
    require	   => Package['apache2'],
  #refreshonly => true,
