@@ -36,7 +36,7 @@ package {'libapache2-mod-php5'
         }
 
 file { '/var/www/html/website1':
-  source => "/tmp/website1",
+  source => "/tmp/PHP/website1",
   require => Package['apache2'],
   recurse => true,
 }
