@@ -57,7 +57,7 @@ exec {'Create db':
         }
 
 exec {'Followup script':
-        command => "/usr/bin/mysql br < /tmp/website1/br/br.sql",
+        command => "/usr/bin/mysql br < /tmp/PHP/website1/br/br.sql",
         require => Exec['Create db'],
      }
 
