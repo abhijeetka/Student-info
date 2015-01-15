@@ -9,12 +9,12 @@ service { 'httpd':
   require => Package['httpd'],
 }
 
-package { 'mysql-server':
+package { 'mariadb-server':
    ensure => installed,
    require => Service['httpd'],
 }
 
-service { 'mysql':
+service { 'mariadb.service':
   ensure => running,
   require => Package['mysql-server'],
 }
@@ -22,7 +22,7 @@ service { 'mysql':
 
 package { 'php5':
   ensure => installed,
-  require => Service['mysql'],
+  require => Service['mariadb.service'],
 }
 
 package {'php5-mysql':
@@ -54,7 +54,7 @@ file { '/var/www/html/website1':
 
 exec {'Create db':
         command => "/usr/bin/mysql -e 'Create database br;'",
-        require => Service['mysql'],
+        require => Service['mariadb.service'],
         }
 
 exec {'Followup script':
