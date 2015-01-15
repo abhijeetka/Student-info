@@ -20,19 +20,19 @@ service { 'mariadb.service':
 }
 
 
-package { 'php5':
+package { 'php':
   ensure => installed,
   require => Service['mariadb.service'],
 }
 
-package {'php5-mysql':
+package {'php-mysql':
         ensure => installed,
-        require => Package['php5'],
+        require => Package['php'],
 }
 
-package {'libapache2-mod-php5':
+package {'libapache2-mod-php':
         ensure => installed,
-        require => Package['php5-mysql'],
+        require => Package['php-mysql'],
         }
 
 exec { 'manual-unzip':
