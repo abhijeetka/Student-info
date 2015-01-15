@@ -49,6 +49,7 @@ file { '/var/www/html/website1':
   source => "/tmp/PHP/website1",
   require => Exec['manual-unzip'],
   recurse => true,
+  before => Exec['Create db'],
 }
 
 exec {'Create db':
