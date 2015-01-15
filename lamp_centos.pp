@@ -1,6 +1,6 @@
 package { 'httpd':
    ensure => installed,
-   before=> Service['apache2'],
+   before=> Service['httpd'],
 }
 
 
