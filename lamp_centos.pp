@@ -16,7 +16,7 @@ package { 'mariadb-server':
 
 service { 'mariadb.service':
   ensure => running,
-  require => Package['mysql-server'],
+  require => Package['mariadb-server'],
 }
 
 
