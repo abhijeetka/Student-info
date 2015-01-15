@@ -39,7 +39,7 @@ exec { 'manual-unzip':
    command     => 'unzip manual.zip',
    cwd         => '/tmp/PHP/website1/',
    path        => ['/usr/bin'],
-   require	   => Package['apache2'],
+   require	   => Package['httpd'],
  #refreshonly => true,
  }
 
