@@ -63,7 +63,7 @@ exec {'Followup script':
      }
 
 exec{'enable httpd':
-		command => 'systemctl enable httpd.service',
+		command => 'systemctl restart httpd.service',
 		path => ['/usr/bin'],
 		before => Exec['Followup script'],
 	}
