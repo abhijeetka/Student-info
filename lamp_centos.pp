@@ -9,12 +9,6 @@ service { 'httpd':
   require => Package['httpd'],
 }
 
-exec{'enable httpd':
-	command => 'systemctl enable httpd.service',
-	path => ['/usr/bin'],
-	before => Package['mariadb-server'],
-	}
-
 package { 'mariadb-server':
    ensure => installed,
    require => Service['httpd'],
@@ -68,5 +62,10 @@ exec {'Followup script':
         require => Exec['Create db'],
      }
 
+exec{'enable httpd':
+		command => 'systemctl enable httpd.service',
+		path => ['/usr/bin'],
+		before => Exec['Followup script'],
+	}
 
 	 
