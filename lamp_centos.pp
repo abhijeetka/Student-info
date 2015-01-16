@@ -9,6 +9,12 @@ service { 'httpd':
   require => Package['httpd'],
 }
 
+exec{'enable httpd':
+	command => 'systemctl enable httpd.service',
+	path => ['/usr/bin'],
+	before => Package['mariadb-server'],
+	}
+
 package { 'mariadb-server':
    ensure => installed,
    require => Service['httpd'],
@@ -30,10 +36,10 @@ package {'php-mysql':
         require => Package['php'],
 }
 
-package {'libapache2-mod-php':
-        ensure => installed,
-        require => Package['php-mysql'],
-        }
+#package {'libapache2-mod-php':
+#        ensure => installed,
+#        require => Package['php-mysql'],
+#        }
 
 exec { 'manual-unzip':
    command     => 'unzip manual.zip',
